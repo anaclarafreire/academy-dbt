@@ -1,0 +1,10 @@
+dbt_aw:
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: desafio-final-lh-449118  # Insira o ID do projeto aqui
+      dataset: RAW
+      threads: 4
+      keyfile: C:\Users\ACER NITRO\Documents\GitHub\academy-dbt\desafio-final-lh-449118-e8df1a6e6d0a.json
+  target: dev

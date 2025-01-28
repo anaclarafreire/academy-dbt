@@ -45,3 +45,4 @@ seeds:
   desafio: # <-- Name of the project. If you renamed your project you have to change this as well
     sap_adventure_works:
       +schema: RAW_sap_aw
+

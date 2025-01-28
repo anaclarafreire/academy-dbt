@@ -1,0 +1,26 @@
+version: 2 
+
+sources:
+  - name: RAW_sap_aw  # Nome exato do dataset no BigQuery
+    database: desafio-final-lh-449118  # ID do seu projeto no BigQuery
+    schema: RAW_sap_aw  # Nome do dataset no BigQuery
+    tables:
+      - name: product  
+      - name: customer
+      - name: person
+      - name: salesreason
+      - name: salesperson
+      - name: employee  
+      - name: stateprovince
+      - name: address
+      - name: countryregion
+      - name: salesorderheader
+      - name: salesorderdetail
+
+    
+    
+
+
+
+
+

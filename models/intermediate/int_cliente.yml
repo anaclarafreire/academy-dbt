@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: int_cliente
+    description: "Modelo de transformação dos dados de stg_customer e stg_person, unindo-os para criar a futura dim_clientes."
+    columns:
+      - name: pk_id_cliente
+        description: "Coluna de identificação do cliente." 
+        tests: 
+          - unique
+          - not_null
+
+

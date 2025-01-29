@@ -6,5 +6,5 @@ dbt_aw:
       project: desafio-final-lh-449118  
       dataset: RAW
       threads: 4
-      keyfile: C:\Users\ACER NITRO\Documents\GitHub\academy-dbt\desafio-final-lh-449118-e15e6b41b26c.json
+      keyfile: C:\Users\ACER NITRO\Documents\GitHub\academy-dbt\desafio-final-lh-449118-6f025bf1fe9d.json
   target: dev

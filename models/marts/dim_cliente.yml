@@ -1,17 +1,26 @@
-# version: 2
-# 
-# models:
-#   - name: dim_cliente
-#     description: "Dimensão de clientes da AdventureWorks."
-#     columns:
-#       - name: pk_id_cliente
-#         description: "Chave primária do cliente."
-#         tests:
-#           - unique
-#           - not_null
-#       - name: id_territorio
-#         description: "Identificador do território do cliente."
-#       - name: nome_pessoa
-#         description: "Nome do cliente."
-#       - name: sobrenome_pessoa
-#         description: "Sobrenome do cliente."
+version: 2
+
+models:
+  - name: dim_cliente
+    description: "Dimensão de clientes individuais, unindo dados de stg_customer e stg_person."
+    columns:
+      - name: pk_id_cliente
+        description: "Chave primária da dimensão cliente."
+        tests:
+          - not_null
+          - unique
+
+      - name: pk_id_entidade
+        description: "Identificador da entidade (pessoa) associada ao cliente."
+        tests:
+          - not_null
+
+      - name: nome_cliente
+        description: "Nome do cliente."
+        tests:
+          - not_null
+
+      - name: sobrenome_cliente
+        description: "Sobrenome do cliente."
+        tests:
+          - not_null

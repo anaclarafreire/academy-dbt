@@ -5,18 +5,17 @@ sources:
     database: desafio-final-lh-449118  # ID do seu projeto no BigQuery
     schema: RAW_sap_aw  # Nome do dataset no BigQuery
     tables:
-      - name: address  
-      - name: countryregion
+      - name: product  
       - name: customer
-      - name: employee
-      - name: salesperson 
       - name: person
-      - name: product
-      - name: salesorderdetail
-      - name: salesorderheader
       - name: salesreason
+      - name: salesperson
+      - name: employee  
       - name: stateprovince
-
+      - name: address
+      - name: countryregion
+      - name: salesorderheader
+      - name: salesorderdetail
 
     
     

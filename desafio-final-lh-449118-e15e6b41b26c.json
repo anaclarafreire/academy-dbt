@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "desafio-final-lh-449118",
+  "private_key_id": "e15e6b41b26cdd51fd8d21032fc06c96b7ec987d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDpcWuNwdjPECl4\nky2SH4pNCc6eOErPM2DmoTcsycVynnmvqHRv7hj56RWECatpKzr1LkYQuUQUBKk2\nUpbxdyk/cASOyPEcf3/IjhqiAD93A7yl8PIwLp/Vf+PRRf4ldvIcsYmEAuoo/j5v\ngUW4OAWI0H889hI6TJsymuNRJaL2ppp7FSTM9dbkYERpTaJzGWACEfDNrCk/0z4c\nL4eDin6bd8PCXzMvgNkLtf+w8xGozl3iDOH1EQY4bRxuxt5FsjKCVLVMsz6/d0e8\nmxxdrXtvoNKcz8zeMgi7V96z7byAbgf3o0sFu7VPDd8s6/RfWwJUW/HDptuwz9mu\nTjVjKwaFAgMBAAECggEAFQftFOMVJYhy+AQoa5zwUIL07J+tK7AZB4YYKq6N3Ybl\n9xuRy+CzOtaTI+dcHDgzElImKU0Lk1MdLIHxy9S8sFSm8Hctc7AP4tFcmGI11YLO\nbNPBefJFX45rR5gK7rSh2NBsz2oUzvciyFho39EaPIpuIB+aIkrzA3LdTlr57McH\nHi7gg7rDz20siuOtQ6IUVlLGYw3FaEo0gVfYJAj9jFG/DRu0yvu09usQ7TYiqwGT\n2jCz4iRI+stHjwRKL7q/HWagkwRQOoI3EKTn/8ueKq2sIW2/TWkjOircFCS6gr1c\nbhYzqAv0waYK4h4+m12kB6JBVVfjyUMDuKF/muUkWQKBgQD6DwWM8toCFwNlJxQn\nAHyfKmvQGLRHD9W+ACPdkXC2jN08nxBzPP0ADD6SmquXruR+5y8E1Uejmy38uS8B\nZ+00DaRJs2SLQBYZmEaJpcb3oa1P3coe3ecp1cpHx8BYnWf1z3cWAN+pb+UkgpAe\nrrgnuHF9R8sBHUjJ8BC2nSyyfQKBgQDu/VWIaWWSWMs7XwxqRm0ESnfuT1m+3oaA\nNHwSW8KKVV+vXsNE/CbH2uGg/zWxnu/DWVIrhfQyUfb+DNvk+TfpbmyWPFy/4lkZ\n/Hwsy5SGgGaHFqe7t6BFMuw4SA07rE+LqSttTGsE4Cd7MT3ljfBDsALS765+vz3f\nd8XhWpKaqQKBgAzT7HL4mlp1F8V+pbgCfGIl6PX57nWeyFZA55YcOe4Dd+3+MvfW\nbxwrhKI8sQTNAgfIkE7tKgmokklerpyh2jdLY9wsCcJi/T8+4o95I6Xcc2mfdRj0\nRUGOKBxakPF60bR4eiF01gR5KwYedIo+aFARVDEbF7zs5akGWbUkhwB5AoGAN5mq\nn4zdu5l61ro7OjJeRIRKuJ+vYm+E3SjYwLCmZuaL11H1ngQHxbFPktQtGsC+STVr\nn4KPmHFnRB2bvv6YGm+9RYqPjXjMf/Y0sXs/d7dBoyYLKeoDmHXLbSCeK4bgDr7x\nwoDn2P+JT+jZ3KEUB7tYPNjUQNqfO3EzEUWwG9kCgYEA9fTY+jGTE9bYE1blqLT5\nKQqiXtIk6k7SxEZqSOtROKGXd3YnPeIfzBPkA0swjruxYtD6vHqF0/1M0K45ti95\nNkQOA0SLKKjuYM2bG9rC0HoqYzGojXyqlIUBfXp0PTy4Dppt/z7AVWMu3MCWpAKP\n66WyE47RHu+G5XOsIUdNL5Q=\n-----END PRIVATE KEY-----\n",
+  "client_email": "dbt-service-account@desafio-final-lh-449118.iam.gserviceaccount.com",
+  "client_id": "110442292632307081083",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dbt-service-account%40desafio-final-lh-449118.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -32,7 +32,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   desafio: # <-- Name of the project. If you renamed your project you have to change this as well
     staging:
-      +materialized: view
+      +materialized: table
     marts:
       +materialized: table
     # Applies to all files under models/example/

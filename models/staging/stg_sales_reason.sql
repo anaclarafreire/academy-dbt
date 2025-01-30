@@ -1,8 +1,9 @@
 with source_salesreason as (
     select
-        cast(sr.salesreasonid as int64 ) as pk_id_razao_vendas 
-        , cast(sr.name as string ) as nome_razao_venda
-    from {{ source('RAW_sap_aw', 'salesreason') }} sr
+        cast(salesreasonid as int64) as pk_id_motivo_venda,
+        cast(name as string) as descricao_motivo_venda,
+        cast(reasontype as string) as tipo_motivo_venda
+    from {{ source('RAW_sap_aw', 'salesreason') }}
 )
 
 select *

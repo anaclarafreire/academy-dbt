@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_motivo_venda
+    description: "Dimensão de motivos de venda da AdventureWorks."
+    columns:
+      - name: pk_id_motivo_venda
+        description: "Chave primária da dimensão de motivos de venda."
+        tests:
+          - not_null
+          - unique
+
+      - name: descricao_motivo_venda
+        description: "Descrição dos códigos de motivos de venda."
+        tests:
+          - not_null
+
+      - name: descricao_motivo_venda
+        description: "Descrição dos códigos de motivos de venda."
+        tests:
+          - not_null
+

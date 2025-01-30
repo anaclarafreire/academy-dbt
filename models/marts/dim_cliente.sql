@@ -1,26 +1,23 @@
--- models/marts/dimensions/dim_cliente.sql
-{{ config(materialized = 'table') }}
-
-with stg_person as (
+with person as (
     select
-        p.pk_id_entidade
-        , p.nome_pessoa
-        , p.sobrenome_pessoa
-    from {{ ref('stg_person') }} p
+        pk_id_entidade
+        , nome_pessoa
+        , sobrenome_pessoa
+    from {{ ref('stg_person') }}
 ),
 
-stg_customer as (
+customer as (
     select
-        c.pk_id_cliente
-        , c.fk_id_entidade
-    from {{ ref('stg_customer') }} c
+        pk_id_cliente
+        , fk_id_entidade
+    from {{ ref('stg_customer') }}
 )
 
 select
-    c.pk_id_cliente
-    , p.pk_id_entidade
-    , p.nome_pessoa as nome_cliente
-    , p.sobrenome_pessoa as sobrenome_cliente
-from stg_customer c
-inner join stg_person p  -- Garantindo que pegamos apenas clientes reais
-    on p.pk_id_entidade = c.fk_id_entidade
+    customer.pk_id_cliente
+    , person.pk_id_entidade
+    , person.nome_pessoa as nome_cliente
+    , person.sobrenome_pessoa as sobrenome_cliente
+from customer 
+inner join person 
+    on person.pk_id_entidade = customer.fk_id_entidade

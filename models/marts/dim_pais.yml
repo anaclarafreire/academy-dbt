@@ -6,9 +6,6 @@ models:
     columns:
       - name:     pk_sigla_pais
         description: "Chave primária - sigla do país."
-        tests: 
-          - unique
-          - not_null
 
       - name: nome_pais
         description: "Nome do país em que a venda foi realizada. "

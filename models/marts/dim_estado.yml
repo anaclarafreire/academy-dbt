@@ -1,21 +1,17 @@
 version: 2
 
 models:
-  - name: dim_cliente
-    description: "Dimensão de clientes individuais, unindo dados de stg_customer e stg_person."
+  - name: dim_estado
+    description: "Dimensão de localide: estado em que cada venda foi efetuada."
     columns:
-      - name: pk_id_cliente
-        description: "Chave primária da dimensão cliente."
-        tests:
-          - not_null
-          - unique
+      - name: pk_id_estado
+        description: "Chave primária da dimensão de estado."
 
-      - name: pk_id_entidade
-        description: "Identificador da entidade (pessoa) associada ao cliente."
-        tests:
-          - not_null
+      - name: nome_estado
+        description: "Nome do estado associado à chave primária."
 
-      - name: nome_completo_cliente
-        description: "Nome completo do cliente."
-        tests:
-          - not_null
+      - name: sigla_pais
+        description: "Sigla do país de localização do estado. "
+
+      - name: fk_id_territorio
+        description: "Identificador único do território. "

@@ -12,6 +12,9 @@ models:
 
       - name: nome_completo_vendedor
         description: "Nome completo do vendedor."
+        tests:
+          - not_null
+
 
 #      - name: id_nacional_vendedor
 #        description: "Identificação nacional do vendedor."

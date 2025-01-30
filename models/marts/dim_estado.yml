@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_cliente
+    description: "Dimensão de clientes individuais, unindo dados de stg_customer e stg_person."
+    columns:
+      - name: pk_id_cliente
+        description: "Chave primária da dimensão cliente."
+        tests:
+          - not_null
+          - unique
+
+      - name: pk_id_entidade
+        description: "Identificador da entidade (pessoa) associada ao cliente."
+        tests:
+          - not_null
+
+      - name: nome_completo_cliente
+        description: "Nome completo do cliente."
+        tests:
+          - not_null

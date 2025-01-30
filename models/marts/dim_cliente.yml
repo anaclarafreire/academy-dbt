@@ -15,12 +15,7 @@ models:
         tests:
           - not_null
 
-      - name: nome_cliente
-        description: "Nome do cliente."
-        tests:
-          - not_null
-
-      - name: sobrenome_cliente
-        description: "Sobrenome do cliente."
+      - name: nome_completo_cliente
+        description: "Nome completo do cliente."
         tests:
           - not_null

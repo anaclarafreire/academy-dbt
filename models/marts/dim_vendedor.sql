@@ -6,6 +6,7 @@ with person as (
     from {{ ref('stg_person') }}
     where tipo_pessoa = 'VC'  
 )
+
 select 
         pk_id_entidade
         , nome_completo_vendedor

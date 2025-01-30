@@ -15,9 +15,9 @@ customer as (
 )
 
 select
-    customer.pk_id_cliente
-    , person.pk_id_entidade
+    pk_id_entidade
+    , pk_id_cliente
     , nome_completo_cliente
-from customer 
-inner join person 
-    on person.pk_id_entidade = customer.fk_id_entidade
+from person 
+inner join customer 
+    on pk_id_entidade = fk_id_entidade

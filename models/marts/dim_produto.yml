@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_produto
+    description: "Dimensão de produtos."
+    columns:
+      - name:     pk_id_produto
+        description: "Chave primária: identificação do produto."
+
+      - name: nome_produto
+        description: "Nome do produto."
+
+      - name: custo_padrao_produto
+        description: "Custo padrão do produto."
+
+      - name:     fk_id_produto
+        description: "Chave estrangeira - identificação do produto."
+
+
+

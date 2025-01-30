@@ -1,21 +1,16 @@
-#version: 2
-#
-#models:
-#  - name: int_address
-#    description: "Tabela intermediate de endereço, agregando informações da camada staging."
-#    columns:
-#      - name: id_endereco
-#        description: "Chave primária do endereço."
-#        tests:
-#          - unique
-#          - not_null
-#      - name: nome_cidade
-#        description: "Nome da cidade referente ao endereço."
-#      - name: id_estado
-#        description: "Chave estrangeira para a tabela de estado."
-#    
+version: 2
 
+models:
+  - name: dim_cidade
+    description: "Dimensão de localide: cidade em que cada venda foi efetuada."
+    columns:
+      - name: pk_id_endereco
+        description: "Chave primária do endereço."
 
+      - name: nome_cidade
+        description: "Nome da Cidade em que a venda foi realizada. "
 
+      - name: fk_id_estado
+        description: "Identificador do estado de cada venda. "
 
 

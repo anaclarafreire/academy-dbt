@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_pais
+    description: "Dimensão de localide: pais em que cada venda foi efetuada."
+    columns:
+      - name:     pk_sigla_pais
+        description: "Chave primária - sigla do país."
+        tests: 
+          - unique
+          - not_null
+
+      - name: nome_pais
+        description: "Nome do país em que a venda foi realizada. "
+
+

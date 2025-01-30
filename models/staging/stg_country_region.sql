@@ -1,8 +1,8 @@
 with source_countryregion as (
     select
-        cast(cr.countryregioncode as string) as pk_sigla_pais
-        , cast(cr.name as string) as nome_pais
-    from {{ source('RAW_sap_aw', 'countryregion') }} cr
+        cast(countryregioncode as string) as pk_sigla_pais
+        , cast(name as string) as nome_pais
+    from {{ source('RAW_sap_aw', 'countryregion') }} 
 )
 
 select *

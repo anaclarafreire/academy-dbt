@@ -5,7 +5,8 @@ sources:
     database: desafio-final-lh-449118  # ID do seu projeto no BigQuery
     schema: RAW_sap_aw  # Nome do dataset no BigQuery
     tables:
-      - name: address  
+      - name: address 
+      - name: creditcard 
       - name: countryregion
       - name: customer
       - name: employee

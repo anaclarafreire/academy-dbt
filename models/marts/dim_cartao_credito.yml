@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_cartao_credito
+    description: "Dimensão de cartões de crédito, para análise por meio de pagamento."
+    columns:
+      - name: pk_id_cartao_credito
+        description: "Chave primária: ID do cartão de crédito."
+        tests:
+          - not_null
+          - unique
+
+      - name: tipo_cartao
+        description: "Tipo de cartão de crédito"
+
+      - name: numero_cartao
+        description: "Número do cartão de crédito."
+

@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_localidade
+    description: "Dimensão de localide: dados regionais sobre os locais de venda."
+    columns:
+      - name: pk_id_endereco
+        description: "ID do endereco."
+
+      - name: linha_endereco_1
+        description: "Endereço associado ao ID."
+
+      - name: fk_id_territorio
+        description: "Chave estrangeira - ID do território. "
+
+      - name: nome_cidade
+        description: "Nome da cidade de pertencimento do endereço. "
+
+      - name: id_estado
+        description: "ID do estado de pertencimento do endereço. "
+
+      - name: nome_estado
+        description: "Nome do estado de pertencimento do endereço. "
+
+      - name: sigla_pais
+        description: "Sigla do país de pertencimento do endereço. "
+
+      - name: nome_pais
+        description: "Nome do país de pertencimento do endereço. "

@@ -4,7 +4,7 @@ with source_address as (
         , cast(addressline1 as string) as linha_endereco_1
         , cast(city as string) as nome_cidade
         , cast(stateprovinceid as int64) as fk_id_estado
-    from {{ source('RAW_sap_aw', 'address') }} a
+    from {{ source('RAW_sap_aw', 'address') }} 
 )
 
 select *

@@ -6,7 +6,7 @@ with produto as (
     from {{ ref('stg_product') }}
 ),
 
-sales_order_detail as (
+detalhe_vendas as (
     select
         fk_id_produto
     from {{ ref('stg_sales_order_detail') }}
@@ -17,5 +17,5 @@ select
     , nome_produto
     , custo_padrao_produto
 from produto
-inner join sales_order_detail 
+inner join detalhe_vendas 
     on pk_id_produto = fk_id_produto

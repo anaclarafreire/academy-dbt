@@ -1,4 +1,4 @@
-with person as (
+with pessoa as (
     select
         pk_id_entidade
         , tipo_pessoa
@@ -10,4 +10,4 @@ with person as (
 select 
         pk_id_entidade
         , nome_completo_vendedor
-from person 
+from pessoa 

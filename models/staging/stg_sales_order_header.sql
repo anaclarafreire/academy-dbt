@@ -1,6 +1,6 @@
 with source_salesorderheader as (
     select
-        cast(salesorderid as int64) as pk_id_pedido
+        cast(salesorderid as int64) as sk_id_pedido
         , cast(orderdate as string) as data_pedido
         , cast(duedate as string) as data_vencimento_pedido 
         , cast(shipdate as string) as data_envio

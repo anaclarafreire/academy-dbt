@@ -1,4 +1,4 @@
-with sales_order_header as (
+with cabecalho_vendas as (
     select
         pk_id_pedido
         , fk_id_cliente
@@ -16,5 +16,5 @@ select
     , data_pedido
     , data_envio
     , data_vencimento_pedido
-from sales_order_header 
+from cabecalho_vendas 
 

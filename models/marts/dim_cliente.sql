@@ -1,4 +1,4 @@
-with person as (
+with pessoa as (
     select
         pk_id_entidade
         , tipo_pessoa
@@ -7,7 +7,7 @@ with person as (
     where tipo_pessoa = 'IN' 
 ),
 
-customer as (
+cliente as (
     select
         pk_id_cliente
         , fk_id_entidade
@@ -18,6 +18,6 @@ select
     pk_id_entidade
     , pk_id_cliente
     , nome_completo_cliente
-from person 
-inner join customer 
+from pessoa 
+inner join cliente 
     on pk_id_entidade = fk_id_entidade

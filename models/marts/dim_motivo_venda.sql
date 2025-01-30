@@ -1,4 +1,4 @@
-with reason as (
+with motivo as (
     select
         pk_id_motivo_venda
         , descricao_motivo_venda
@@ -10,5 +10,5 @@ select
         pk_id_motivo_venda
         , descricao_motivo_venda
         , tipo_motivo_venda
-from reason 
+from motivo 
 

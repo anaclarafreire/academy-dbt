@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: agg_vendas_regiao_vendedor
+    description: "Tabela de vendas agregadas por vendedor e estado, produzida a partir de fact_vendas."
+    columns:
+      - name: sk_vendas_vendedor_estado
+        description: "Surrogate Key da agregação entre vendedor e estado."
+        tests:
+          - not_null
+
+      - name: fk_id_vendedor
+        description: "ID do vendedor analisado."
+
+      - name: nome_completo_vendedor
+        description: "Nome completo do vendedor analisado."
+
+      - name: fk_id_territorio
+        description: "ID de cada território contido no estado analisado."
+
+      - name: fk_id_pedido
+        description: "ID do pedido."
+
+      - name: fk_id_produto
+        description: "ID do produto vendido em cada pedido."
+
+      - name: total_vendas
+        description: "Faturamento de vendas de cada vendedor de cada estado analisado."
+
+      - name: total_pedidos
+        description: "Total de vendas desenvolvidas por cada vendedor de cada estado analisado."
+
+      - name: total_produtos_vendidos
+        description: "Total de produtos vendidos por cada vendedor de cada estado analisado."
+
+      - name: ticket_medio
+        description: "Faturamento médio, por venda, dos vendedores de cada estado analisado."
+

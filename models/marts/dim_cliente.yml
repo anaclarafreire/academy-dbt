@@ -5,7 +5,7 @@ models:
     description: "Dimensão de clientes individuais, unindo dados de stg_customer e stg_person."
     columns:
       - name: pk_id_entidade
-        description: "Identificador da entidade (pessoa) associada ao cliente."
+        description: "Identificador do associada ao cliente."
         tests:
           - not_null
 

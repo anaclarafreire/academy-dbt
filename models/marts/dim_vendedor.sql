@@ -1,13 +1,21 @@
 with pessoa as (
     select
-        pk_id_entidade
-        , tipo_pessoa
-        , nome_completo_pessoa as nome_completo_vendedor
-    from {{ ref('stg_person') }}
-    where tipo_pessoa = 'VC'  
+        p.pk_id_entidade
+        , p.nome_completo_pessoa as nome_completo_vendedor
+    from {{ ref('stg_person') }} p
+),
+
+vendedor as (
+    select
+        v.pk_id_entidade
+        , v.fk_id_territorio
+    from {{ ref('stg_salesperson') }} v
 )
 
 select 
-        pk_id_entidade
-        , nome_completo_vendedor
-from pessoa 
+        p.pk_id_entidade
+        , p.nome_completo_vendedor
+        , v.fk_id_territorio
+from pessoa p
+inner join vendedor v
+    on p.pk_id_entidade = v.pk_id_entidade

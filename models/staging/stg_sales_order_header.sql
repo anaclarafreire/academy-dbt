@@ -7,8 +7,9 @@ with source_salesorderheader as (
         , cast(status as int64) as status_pedido
         , cast(onlineorderflag as bool) as flag_pedido_online
         , cast(customerid as int64) as fk_id_cliente
-        , cast(salespersonid as int64) as fk_id_entidade
+        , cast(salespersonid as int64) as fk_id_vendedor
         , cast(shiptoaddressid as int64) as fk_id_endereco
+        , cast(territoryid as int64) as fk_id_territorio
         , cast(creditcardid as int64) as fk_id_cartao_credito
         , cast(subtotal as numeric) as subtotal  
         , cast(totaldue as numeric) as total_pedido

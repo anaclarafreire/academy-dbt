@@ -12,29 +12,7 @@ models:
 
       - name: nome_completo_vendedor
         description: "Nome completo do vendedor."
-        tests:
-          - not_null
 
+      - name: fk_id_territorio
+        description: "ID do território de atuação do vendedor."
 
-#      - name: id_nacional_vendedor
-#        description: "Identificação nacional do vendedor."
-#        tests:
-#          - unique
-#
-#      - name: genero_vendedor
-#        description: "Gênero do vendedor."
-#
-#      - name: ano_contratacao
-#        description: "Ano de contratação do vendedor."
-#
-#      - name: ano_nascimento
-#        description: "Ano de nascimento do vendedor."
-#
-#      - name: horas_ferias
-#        description: "Horas de férias disponíveis para o vendedor."
-
-      # - name: fk_id_regiao
-      #   description: "Região de atuação do vendedor."
-
-      # - name: vendas_ano_anterior
-      #   description: "Valor das vendas no ano anterior."

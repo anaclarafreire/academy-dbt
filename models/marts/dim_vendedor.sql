@@ -1,21 +1,22 @@
-with pessoa as (
-    select
-        p.pk_id_entidade
-        , p.nome_completo_pessoa as nome_completo_vendedor
-    from {{ ref('stg_person') }} p
+WITH vendedor AS (
+    SELECT
+        pk_id_entidade
+        , fk_id_territorio
+    FROM {{ ref('stg_salesperson') }} 
 ),
 
-vendedor as (
-    select
-        v.pk_id_entidade
-        , v.fk_id_territorio
-    from {{ ref('stg_salesperson') }} v
+pessoa AS (
+    SELECT
+        pk_id_entidade AS fk_id_entidade
+        , nome_completo_pessoa AS nome_completo_vendedor
+    FROM {{ ref('stg_person') }} 
 )
 
-select 
-        p.pk_id_entidade
-        , p.nome_completo_vendedor
-        , v.fk_id_territorio
-from pessoa p
-inner join vendedor v
-    on p.pk_id_entidade = v.pk_id_entidade
+SELECT 
+    v.pk_id_entidade AS fk_id_entidade
+    , p.nome_completo_vendedor
+    , v.fk_id_territorio
+
+FROM vendedor v
+LEFT JOIN pessoa p
+    ON v.pk_id_entidade = p.fk_id_entidade

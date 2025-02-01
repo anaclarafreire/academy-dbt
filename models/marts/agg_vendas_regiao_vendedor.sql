@@ -13,7 +13,6 @@ vendas as (
     group by
         fv.fk_id_vendedor
         , fv.fk_id_territorio
-        , fv.fk_id_pedido
         , fv.fk_id_produto
 ),
 
@@ -36,7 +35,6 @@ select
     , vendas.fk_id_vendedor
     , vendedor.nome_completo_vendedor
     , vendas.fk_id_territorio
-    , vendas.fk_id_pedido
     , vendas.fk_id_produto
     , vendas.total_vendas
     , vendas.total_pedidos
@@ -44,7 +42,7 @@ select
     , vendas.ticket_medio
 
 from vendas
-inner join regiao
+left join regiao
     on vendas.fk_id_territorio = regiao.fk_id_territorio
-inner join vendedor
+left join vendedor
     on vendas.fk_id_vendedor = vendedor.fk_id_vendedor

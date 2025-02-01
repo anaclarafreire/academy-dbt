@@ -12,7 +12,24 @@ models:
 
       - name: nome_completo_vendedor
         description: "Nome completo do vendedor."
+        tests:
+          - not_null
+
+      - name: genero_vendedor
+        description: "Gênero do vendedor."
+        tests:
+          - not_null
+    
 
       - name: fk_id_territorio
         description: "ID do território de atuação do vendedor."
 
+      - name: ano_nascimento
+        description: "Ano de nascimento do vendedor."
+        tests:
+          - not_null
+
+      - name: ano_contratacao
+        description: "Ano de contratação do vendedor."
+        tests:
+          - not_null

@@ -6,24 +6,30 @@ models:
     columns:
       - name: pk_id_endereco
         description: "ID do endereco."
-
-      - name: linha_endereco_1
-        description: "Endereço associado ao ID."
+        tests:
+          - not_null
+          - unique
 
       - name: fk_id_territorio
-        description: "Chave estrangeira - ID do território. "
+        description: "Chave estrangeira - ID do território."
+        tests:
+          - not_null
 
-      - name: nome_cidade
-        description: "Nome da cidade de pertencimento do endereço. "
+      - name: nome_territorio
+        description: "Nome do território."
 
-      - name: id_estado
-        description: "ID do estado de pertencimento do endereço. "
+      - name: fk_id_estado
+        description: "ID do estado de pertencimento do endereço."
+        tests:
+          - not_null
 
       - name: nome_estado
-        description: "Nome do estado de pertencimento do endereço. "
+        description: "Nome do estado de pertencimento do endereço."
 
-      - name: sigla_pais
-        description: "Sigla do país de pertencimento do endereço. "
+      - name: fk_sigla_pais
+        description: "Sigla do país de pertencimento do endereço."
+        tests:
+          - not_null
 
       - name: nome_pais
-        description: "Nome do país de pertencimento do endereço. "
+        description: "Nome do país de pertencimento do endereço."

@@ -13,11 +13,14 @@ sources:
       - name: salesperson 
       - name: person
       - name: product
+      - name: productcategory
+      - name: productsubcategory
       - name: salesorderdetail
       - name: salesorderheader
       - name: salesreason
       - name: stateprovince
-
+      - name: salesterritory
+      - name: store
 
     
     

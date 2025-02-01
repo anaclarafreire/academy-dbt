@@ -8,3 +8,4 @@ with source_person as (
 
 select *
 from source_person
+-- where pk_id_entidade is not null

@@ -7,3 +7,4 @@ with source_salesperson as (
 
 select *
 from source_salesperson
+where pk_id_entidade is not null

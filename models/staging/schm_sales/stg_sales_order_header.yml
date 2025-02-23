@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: stg_sales_order_header
+    description: "Tabela staging de análise horizontal das vendas da Adventure Works."
+    columns:
+      - name: sk_id_pedido
+        description: "Chave primária da tabela, com o código (id) do pedido a ser detalhado. Permite conectá-la à tabela stg_sales_order_detail."
+        tests:
+          - not_null
+          - unique
+
+      - name: data_pedido
+        description: "Data do pedido."
+
+      - name: data_vencimento_pedido
+        description: "Data de vencimento do pedido."
+
+      - name: data_envio
+        description: "Data de envio do pedido."
+
+      - name: status_pedido
+        description: "Status do pedido."
+
+      - name: flag_pedido_online
+        description: "Flag booleana que indica se a venda foi feita online ou presencialmente."
+
+      - name: fk_id_cliente
+        description: "Chave estrangeira da tabela, com o id (código) do comprador. Permite conectá-la à tabela stg_customer."
+        tests: 
+          - not_null
+
+      - name: fk_id_vendedor
+        description: "Chave estrangeira da tabela, com o id (código) do vendedor. Permite conectá-la à tabela stg_sales_person."
+        tests: 
+          - not_null
+
+      - name: fk_id_endereco
+        description: "Chave estrangeira da tabela, com o id (código) do endereço de envio. Permite conectá-la à tabela stg_address."
+        tests: 
+          - not_null
+
+      - name: fk_id_territorio
+        description: "Id (código) do território de conclusão da venda."
+        tests: 
+          - not_null
+
+      - name: fk_id_cartao_credito
+        description: "Chave estrangeira da tabela, com o id (código) do cartão de crédito utilizado como meio de pagamento na venda."
+
+      - name: subtotal
+        description: "Subtotal do pedido."
+
+      - name: total_pedido
+        description: "Total do pedido."
+
+
+

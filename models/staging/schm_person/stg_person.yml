@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_person
+    description: "Tabela staging de detalhamento de pessoas."
+    columns:
+      - name: pk_id_pessoa
+        description: "Chave primária da tabela, com o código (id) da pessoa."
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_completo_pessoa
+        description: "Nome completo da pessoa, gerado a partir da concatenação dos campos `firstname` e `lastname` da fonte `source_person`."

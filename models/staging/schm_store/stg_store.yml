@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_store
+    description: "Tabela staging de relação de lojas da Adventure Works."
+    columns:
+      - name: pk_id_entidade
+        description: "Chave primária da tabela, com o código (id) da loja."
+        tests:
+          - not_null
+
+      - name: nome_loja
+        description: "Nome da loja."
+
+      - name: fk_id_vendedor
+        description: "Chave estrangeira da tabela, com o id de cada vendedor. Permite conectá-la à tabela stg_salesperson."
+        
+

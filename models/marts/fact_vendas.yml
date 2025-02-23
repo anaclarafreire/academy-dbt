@@ -29,14 +29,14 @@ models:
         tests:
           - not_null
 
-      - name: fk_id_cartao_credito
-        description: "ID do cartão de crédito utilizado na venda, em caso de cartão como meio de pagamento."
-
       - name: flag_pedido_online
         description: "Booleano que classifica se a venda foi online (TRUE) ou presencial (FALSE)."
 
       - name: total_pedido
         description: "Valor total do pedido. Para cada ID de pedido, este valor é o mesmo."
+
+      - name: id_cartao_credito
+        description: "ID do cartão de crédito usado como forma de pagamento."
 
       - name: numero_pedidos
         description: "Métrica do número total de pedidos, dada pela contagem distinta dos IDs dos pedidos."

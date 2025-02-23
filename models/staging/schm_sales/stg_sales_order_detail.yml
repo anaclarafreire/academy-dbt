@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_sales_order_detail
+    description: "Tabela staging de detalhamento das vendas da Adventure Works."
+    columns:
+      - name: fk_id_pedido
+        description: "Chave estrangeira da tabela, com o código (id) do pedido a ser detalhado. Permite conectá-la à tabela salesorderheader."
+        tests:
+          - not_null
+
+      - name: quantidade_produto
+        description: "Número de unidades de cada produto transacionado em cada venda."
+
+      - name: fk_id_produto
+        description: "Chave estrangeira da tabela, com o código (id) do produto vendido. Permite conectá-la à tabela product."
+        tests:
+          - not_null
+        
+      - name: preco_unitario
+        description: "Preço unitário cobrado por cada pedido vendido no pedido em questão."
+
+

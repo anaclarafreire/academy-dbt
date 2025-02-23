@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_sales_order_header_reason
+    description: "Tabela staging de detalhamento do motivo da venda de cada venda."
+    columns:
+      - name: pk_id_pedido
+        description: "Chave primária da tabela, com o código (id) do pedido a ser detalhado. Permite conectá-la à tabela stg_sales_order_detail."
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_id_motivo_venda
+        description: "Chave estrangeira da tabela, com o código (id) do motivo de venda. Permite conectá-la à tabela stg_sales_reason."
+        tests:
+          - not_null
+

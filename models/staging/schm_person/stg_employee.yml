@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_employee
+    description: "Tabela staging de detalhamento de funcionários."
+    columns:
+      - name: pk_id_entidade
+        description: "Chave primária da tabela, com o código (id) do funcionário."
+        tests:
+          - not_null
+          - unique
+
+      - name: cargo_funcionario
+        description: "Cargo do funcionário."
+
+      - name: genero_funcionario
+        description: "Gênero do funcionário."
+        
+      - name: data_contratacao
+        description: "Data de contratação do funcionário."
+
+      - name: data_nascimento
+        description: "Data de nascimento do funcionário."
+
+      - name: horas_ferias
+        description: "Horas de férias disponíveis para o funcionário."

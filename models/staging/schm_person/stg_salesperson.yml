@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_salesperson
+    description: "Tabela staging de detalhamento de vendedores."
+    columns:
+      - name: pk_id_vendedor
+        description: "Chave primária da tabela, com o código (id) do vendedor."
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_id_territorio
+        description: "Chave estrangeira da tabela, com o código (id) do território de atuação do vendedor."
+        tests:
+          - not_null

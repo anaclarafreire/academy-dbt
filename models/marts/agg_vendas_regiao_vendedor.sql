@@ -1,48 +1,41 @@
-with 
-vendas as (
-    select 
+WITH vendas AS (
+    SELECT 
         fv.fk_id_vendedor
         , fv.fk_id_territorio
-        , fv.fk_id_pedido
-        , fv.fk_id_produto
-        , sum(fv.valor_total_negociado) as total_vendas
-        , sum(fv.numero_pedidos) as total_pedidos
-        , sum(fv.quantidade_comprada) as total_produtos_vendidos
-        , sum(fv.valor_total_negociado) / sum(fv.numero_pedidos) as ticket_medio
-    from {{ ref('fact_vendas') }} fv
-    group by
-        fv.fk_id_vendedor
-        , fv.fk_id_territorio
-        , fv.fk_id_produto
+        , SUM(fv.numero_pedidos) AS numero_pedidos  -- Somando os pedidos do vendedor
+        , SUM(fv.quantidade_comprada) AS quantidade_comprada -- Somando os produtos vendidos
+        , SUM(fv.valor_total_negociado) AS valor_total_negociado -- Somando o valor total negociado
+        , SUM(fv.valor_total_negociado) / NULLIF(SUM(fv.numero_pedidos), 0) AS ticket_medio  -- Média ponderada
+    FROM {{ ref('fact_vendas') }} fv
+    GROUP BY fv.fk_id_vendedor, fv.fk_id_territorio  -- ✅ Agora a agregação está correta
 ),
 
-regiao as (
-    select
+regiao AS (
+    SELECT
         r.fk_id_territorio
-        , r.fk_id_estado
-    from {{ ref('dim_localidade') }} r
+        , r.nome_territorio
+    FROM {{ ref('dim_localidade') }} r
 ),
 
-vendedor as (
-    select
-        v.pk_id_entidade as fk_id_vendedor
+vendedor AS (
+    SELECT
+        v.pk_id_entidade AS fk_id_vendedor
         , v.nome_completo_vendedor    
-    from {{ ref('dim_vendedor') }} v
+    FROM {{ ref('dim_vendedor') }} v
 )
 
-select
-    to_hex(md5(cast(vendas.fk_id_vendedor as string) || '-' || cast(regiao.fk_id_estado as string))) as sk_vendas_vendedor_estado
+SELECT DISTINCT
+    -- Criando chave surrogate baseada em vendedor + território
+    TO_HEX(MD5(CAST(vendas.fk_id_vendedor AS STRING) || '-' || CAST(vendas.fk_id_territorio AS STRING))) AS sk_vendas_vendedor_regiao
     , vendas.fk_id_vendedor
     , vendedor.nome_completo_vendedor
     , vendas.fk_id_territorio
-    , vendas.fk_id_produto
-    , vendas.total_vendas
-    , vendas.total_pedidos
-    , vendas.total_produtos_vendidos
+    , regiao.nome_territorio
+    , vendas.numero_pedidos as numero_vendas
+    , vendas.quantidade_comprada as produtos_vendidos
+    , vendas.valor_total_negociado as faturamento_total
     , vendas.ticket_medio
 
-from vendas
-left join regiao
-    on vendas.fk_id_territorio = regiao.fk_id_territorio
-left join vendedor
-    on vendas.fk_id_vendedor = vendedor.fk_id_vendedor
+FROM vendas
+LEFT JOIN regiao ON vendas.fk_id_territorio = regiao.fk_id_territorio
+LEFT JOIN vendedor ON vendas.fk_id_vendedor = vendedor.fk_id_vendedor

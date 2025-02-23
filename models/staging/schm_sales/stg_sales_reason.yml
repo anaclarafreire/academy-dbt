@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_sales_reason
+    description: "Tabela staging dedetalhamento dos motivo da venda possíveis."
+    columns:
+      - name: pk_id_motivo_venda
+        description: "Chave primária da tabela, com o código (id) do motivo de venda a ser detalhado. Permite conectá-la à tabela stg_sales_order_header_sales_reason."
+        tests:
+          - not_null
+          - unique
+
+      - name: descricao_motivo_venda
+        description: "Nome do motivo de venda referente a cada código único da tabela."
+
+      - name: tipo_motivo_venda
+        description: "Categoria de cada motivo de venda (Marketing, Promoção ou Outro)."

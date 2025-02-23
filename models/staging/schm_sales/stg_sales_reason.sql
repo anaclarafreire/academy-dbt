@@ -20,6 +20,7 @@ with source_salesreason as (
                 when reasontype = 'Other' then 'Outro'
                 else reasontype -- caso não encontre, mantém o valor original
             end as tipo_motivo_venda
+
     from {{ source('RAW_sap_aw', 'salesreason') }}
 )
 

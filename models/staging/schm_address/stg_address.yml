@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg_address
+    description: "Tabela staging de endereço, produzida a partir dos dados brutos da tabela address."
+    columns:
+      - name: pk_id_endereco
+        description: "Chave primária de identificador do endereço."
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_cidade
+        description: "Nome da cidade em que se situa o endereço."
+
+      - name: fk_id_estado
+        description: "Chave estrangeira que designa o ID do estado/província em que o endereço se encontra."
+        tests:
+          - not_null

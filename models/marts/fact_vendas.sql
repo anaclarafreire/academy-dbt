@@ -1,10 +1,4 @@
-with dim_cartao_credito as (
-    select
-        sk_id_cartao_credito as fk_id_cartao_credito
-    from {{ ref('stg_credit_card') }}
-),
-
-
+with 
 stg_cabecalho_vendas as (
     select
         sk_id_pedido as fk_id_pedido
@@ -12,7 +6,7 @@ stg_cabecalho_vendas as (
         , fk_id_cliente
         , fk_id_vendedor
         , fk_id_territorio
-        , fk_id_cartao_credito
+        , fk_id_cartao_credito as id_cartao_credito
         , total_pedido
     from {{ ref('stg_sales_order_header') }}  
 ), 
@@ -24,9 +18,7 @@ stg_detalhe_vendas as (
         , quantidade_produto
         , preco_unitario
     from {{ ref('stg_sales_order_detail') }}  
-), 
-
-
+),
 
 joined_table as (
     select
@@ -34,28 +26,26 @@ joined_table as (
     -- FKs das dimensões
         , scv.fk_id_pedido
         , scv.fk_id_cliente
-        , scv.fk_id_vendedor
+        , COALESCE(scv.fk_id_vendedor, -1) AS fk_id_vendedor
         , scv.fk_id_territorio
         , sdv.fk_id_produto
-        , scv.fk_id_cartao_credito
     -- Atributos extras
         , scv.flag_pedido_online
         , scv.total_pedido
+        , scv.id_cartao_credito
     -- Métricas agregadas
         , count(distinct scv.fk_id_pedido) as numero_pedidos 
         , sum(sdv.quantidade_produto) as quantidade_comprada
         , sum(sdv.quantidade_produto * sdv.preco_unitario) as valor_total_negociado
-        , sum(sdv.quantidade_produto * sdv.preco_unitario) / count(distinct scv.fk_id_pedido) as ticket_medio
+        , sum(sdv.quantidade_produto * sdv.preco_unitario) / count(scv.fk_id_pedido) as ticket_medio
 
     from stg_cabecalho_vendas scv
     left join stg_detalhe_vendas sdv 
         on scv.fk_id_pedido = sdv.fk_id_pedido  
-    left join dim_cartao_credito dcc 
-        on scv.fk_id_cartao_credito = dcc.fk_id_cartao_credito  
     group by 
-        sk_id_fato_venda, scv.fk_id_pedido, scv.fk_id_cliente, scv.fk_id_vendedor, 
-        scv.fk_id_territorio, sdv.fk_id_produto, scv.fk_id_cartao_credito, 
-        scv.flag_pedido_online, scv.total_pedido
+        scv.fk_id_pedido, scv.fk_id_cliente, COALESCE(scv.fk_id_vendedor, -1), 
+        scv.fk_id_territorio, sdv.fk_id_produto, flag_pedido_online, scv.id_cartao_credito, scv.total_pedido
+        
 )
 
 select * from joined_table

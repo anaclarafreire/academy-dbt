@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_state_province
+    description: "Tabela staging de estados/províncias."
+    columns:
+      - name: pk_id_estado
+        description: "Chave primária do estado/província."
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_estado
+        description: "Nome do estado/província."
+
+      - name: fk_sigla_pais
+        description: "Sigla do país."
+
+      - name: fk_id_territorio
+        description: "Código do território."

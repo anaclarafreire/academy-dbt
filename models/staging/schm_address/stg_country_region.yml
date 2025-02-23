@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_country_region
+    description: "Tabela staging de país, produzida a partir dos dados brutos da tabela countryregion."
+    columns:
+      - name: pk_sigla_pais
+        description: "Chave primária da tabela, com o código (id) do país."
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_pais
+        description: "Nome do país em que se situa o endereço."
+

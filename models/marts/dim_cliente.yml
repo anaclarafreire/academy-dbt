@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: dim_cliente
+    description: "Dimensão de clientes pessoa física, unindo dados de stg_customer e stg_person."
+    columns:
+      - name: sk_id_entidade
+        description: "Chave primária do cliente (pessoa física)."
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_completo_cliente
+        description: "Chave primária da dimensão cliente."
+        tests:
+          - not_null
+
+      - name: fk_id_territorio
+        description: "ID do território ao qual o cliente pertence."
+        tests:
+          - not_null
+
+      - name: nome_territorio
+        description: "Nome do território ao qual o cliente pertence."
+        tests:
+          - not_null
+

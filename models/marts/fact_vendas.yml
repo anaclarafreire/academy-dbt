@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: fact_vendas
+    description: "Tabela fato de vendas, obtida a partir dos dados da AdventureWorks."
+    columns:
+      - name: sk_id_fato_venda
+        description: "Surrogate key da tabela, obtida através dos ids de pedidos e de produtos."
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_id_pedido
+        description: "ID do pedido."
+        tests:
+          - not_null
+
+      - name: fk_id_cliente
+        description: "ID do cliente."
+
+      - name: fk_id_vendedor
+        description: "ID do vendedor associado à venda."
+
+      - name: fk_id_territorio
+        description: "ID do territorio do cliente."
+
+      - name: fk_id_produto
+        description: "ID do produto vendido."
+        tests:
+          - not_null
+
+      - name: flag_pedido_online
+        description: "Booleano que classifica se a venda foi online (TRUE) ou presencial (FALSE)."
+
+      - name: total_pedido
+        description: "Valor total do pedido. Para cada ID de pedido, este valor é o mesmo."
+
+      - name: id_cartao_credito
+        description: "ID do cartão de crédito usado como forma de pagamento."
+
+      - name: numero_pedidos
+        description: "Métrica do número total de pedidos, dada pela contagem distinta dos IDs dos pedidos."
+
+      - name: quantidade_comprada
+        description: "Métrica que oferece o total de produtos de vendidos."
+
+      - name: valor_total_negociado
+        description: "Soma dos preços unitários dos produtos, ponderada pela quantidade vendida de cada produto."
+
+      - name: ticket_medio
+        description: "Métrica obtida pela razão entre o faturamento total de vendas e o número de vendas."

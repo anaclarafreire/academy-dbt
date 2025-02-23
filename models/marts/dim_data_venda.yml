@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_data_venda
+    description: "Dimensão de datas associadas à evolução dos status dos pedidos."
+    columns:
+      - name: pk_id_pedido
+        description: "Chave primária da dimensão cliente."
+        tests:
+          - not_null
+
+      - name: fk_id_cliente
+        description: "Identificador do cliente."
+
+
+      - name: fk_id_entidade
+        description: "Identificador do funcionario associado."
+
+      - name: data_pedido
+        description: "Data de solicitação do pedido"
+
+      - name: data_envio
+        description: "Data de envio do(s) iten(s) do pedido."
+
+      - name: data_vencimento_pedido
+        description: "Data do prazo da conclusão do pedido."

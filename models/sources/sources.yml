@@ -1,0 +1,261 @@
+version: 2 
+
+sources:
+  - name: RAW_sap_aw  
+    database: desafio-final-lh-449118  
+    schema: RAW_sap_aw  
+      - name: address 
+          description: tabela com a descrição dos endreços. 
+          columns:
+            - name: adressid
+              description: Chave primária da tabela de endereços. 
+              tests:
+                - not_null
+                - unique
+            - name: city
+              description: Nome da cidade em que se situa o endereço. 
+            - name: stateprovinceid
+              description: Chave estrangeira que designa o id do estado/província em que o endereço se encontra.  
+              tests:
+                - not_null     
+
+      - name: countryregion
+          description: Tabela de detalhamento de países, da qual é possível extrair o nome deles. 
+          columns:
+            - name: countryregioncode
+              description: Chave primária da tabela, com o código (id) do país. 
+              tests:
+                - not_null
+                - unique
+            - name: name
+              description: Nome do país. 
+              tests:
+                - not_null
+
+      - name: customer
+          description: Tabela de detalhamento de clientes.
+          columns:
+            - name: personid
+              description: Chave primária da tabela, com o código (id) do cliente. 
+              tests:
+                - not_null
+                - unique
+            - name: territoryid
+              description: Chave estrangeira da tabela, com o código (id) do território de pertencimento do cliente. 
+              tests:
+                - not_null
+
+      - name: employee
+          description: Tabela de detalhamento de funcionários.
+          columns:
+            - name: businessentityid
+              description: Chave primária da tabela, com o código (id) do funcionário.
+              tests:
+                - not_null
+                - unique
+            - name: jobtitle
+              description: Cargo do funcionário. 
+            - name: gender
+              description: Gênero do funcionário. 
+            - name: hiredate
+              description: Data de contratação do funcionário.
+            - name: birthdate
+              description: Data de nascimento do funcionário.
+            - name: vacationhours
+              description: Horas de férias disponíveis para o funcionário. 
+
+      - name: salesperson 
+          description: Tabela de detalhamento de vendedores.
+          columns:
+            - name: businessentityid
+              description: Chave primária da tabela, com o código (id) do vendedor.
+              tests:
+                - not_null
+                - unique
+            - name: territoryid
+              description: Chave estrangeira da tabela, com o código (id) do território de atuação do vendedor.
+              tests:
+                - not_null
+
+      - name: person
+          description: Tabela de detalhamento de pessoas, de onde é possível obter os nomes delas.
+          columns:
+            - name: businessentityid
+              description: Chave primária da tabela, com o código (id) do vendedor.
+              tests:
+                - not_null
+                - unique
+            - name: persontype
+              description: Código do tipo de pessoa, que permite classificá-las em categorias. 'EM' significa employee (funcionário), SC significa store contact (pessoa que é contato associado a uma loja), VC significa vendor contact (pessoa associada a um fornecedor), IN significa individual customer (cliente que compra como pessoa física), GC significa general contact (pessoa que não se enquadra nas demais caracteristicas, mas que tem algum relacionamento com a Adventure Works), e SP significa sales person (representante de vendas da empresa). 
+            - name: firstname
+              description: Primeiro nome da pessoa do registro. 
+            - name: lastname
+              description: Sobrenome da pessoa do registro.  
+
+      - name: product
+          description: Tabela de detalhamento dos produtos vendidos pela Adventure Works.
+          columns:
+            - name: productid
+              description: Chave primária da tabela, com o código (id) do produto.
+              tests:
+                - not_null
+                - unique
+            - name: name
+              description: Nome do produto.
+            - name: productsubcategoryid
+              description: Chave estrangeira da tabela, que indica a subcategoria do produto e permite conectá-la à tabela product_subcategory.
+              tests:
+                - not_null
+            - name: productnumber
+              description: Código do produto.
+            - name: standardcost
+              description: Custo padrão do produto.
+
+      - name: productcategory
+          description: Tabela de detalhamento das categorias dos produtos produtos vendidos pela Adventure Works, de onde é possível obter os nomes de cada categoria.
+          columns:
+            - name: productcategoryid
+              description: Chave primária da tabela, com o código (id) da categoria do produto.
+              tests:
+                - not_null
+                - unique
+            - name: name
+              description: Nome da categoria do produto.
+
+      - name: productsubcategory
+          description: Tabela de detalhamento das subcategorias dos produtos produtos vendidos pela Adventure Works, de onde é possível obter os nomes de cada subcategoria.
+          columns:
+            - name: productsubcategoryid
+              description: Chave primária da tabela, com o código (id) da subcategoria do produto.
+              tests:
+                - not_null
+                - unique
+            - name: name
+              description: Nome da subcategoria do produto.
+            - name: productcategoryid
+              description: Chave estrangeira da tabela, com o código (id) da categoria do produto. Permite conectá-la à tabela productcategory. 
+              tests:
+                - not_null
+
+      - name: salesorderdetail
+          description: Tabela de detalhamento das vendas da Adventure Works.
+          columns:
+            - name: salesorderid
+              description: Chave estrangeira da tabela, com o código (id) do pedido a ser detalhado. Permite conectá-la à tabela salesorderheader.
+              tests:
+                - not_null
+            - name: orderqty
+              description: Número de unidades de cada produto transacionado em cada venda.
+            - name: productid
+              description: Chave estrangeira da tabela, com o código (id) do produto vendido. Permite conectá-la à tabela product.
+              tests: 
+                - not_null
+            - name: unitprice
+              description: Preço unitário cobrado por cada pedido vendido no pedido em questão.
+
+      - name: salesorderheader
+          description: Tabela de análise horizontal das vendas da Adventure Works.
+          columns:
+            - name: salesorderid
+              description: Chave primária da tabela, com o código (id) do pedido a ser detalhado. Permite conectá-la à tabela salesorderdetail.
+              tests:
+                - not_null
+            - name: orderdate
+              description: Data do pedido.
+            - name: duedate
+              description: Data de vencimento do pedido.
+            - name: shipdate
+              description: Data de envio do pedido.
+            - name: status
+              description: Status do pedido.
+            - name: onlineorderflag
+              description: Flag booleana que indica se a venda foi feita online ou presencialmente.
+            - name: customerid
+              description: Chave estrangeira da tabela, com o id (código) do comprador. Permite conectá-la à tabela customer. 
+              tests: 
+                - not_null
+                - unique
+            - name: salespersonid
+              description: Chave estrangeira da tabela, com o id (código) do vendedor. Permite conectá-la à tabela salesperson.               
+              tests: 
+                - not_null
+                - unique
+            - name: shiptoaddressid
+              description: Chave estrangeira da tabela, com o id (código) do endereço de envio. Permite conectá-la à tabela address.               
+            - name: territoryid
+              description: Id (código) do território de conclusão da venda.   
+            - name: shiptoaddressid
+              description: Chave estrangeira da tabela, com o id (código) do endereço de envio. Permite conectá-la à tabela address.               
+            - name: creditcardid
+              description: Chave estrangeira da tabela, com o id (código) do cartão de crédito utilizado como meio de pagamento na venda. Permite conectá-la à tabela creditcard.   
+            - name: subtotal
+              description: Subtotal do pedido.               
+            - name: totaldue
+              description: Total do pedido.  
+
+      - name: salesorderheadersalesreason
+          description: Tabela de detalhamento do motivo da venda de cada venda.
+          columns:
+            - name: salesorderid
+              description: Chave primária da tabela, com o código (id) do pedido a ser detalhado. Permite conectá-la à tabela salesorderheader.
+              tests:
+                - not_null
+            - name: salesreasonid
+              description: Chave estrangeira da tabela, com o código (id) do motivo de venda. Permite conectá-la à tabela salesreason.
+              tests:
+                - not_null
+
+      - name: salesreason
+          description: Tabela de detalhamento dos motivo da venda possíveis.
+          columns:
+            - name: salesreasonid
+              description: Chave primária da tabela, com o código (id) do motivo de venda a ser detalhado. Permite conectá-la à tabela salesorderheadersalesreason.
+              tests:
+                - not_null
+            - name: name
+              description: Nome do motivo de venda referente a cada código único da tabela. 
+            - name: reasontype
+              description: Categoria de cada motivo de venda (Marketing, Promoção ou Outro). 
+
+      - name: stateprovince
+          description: Tabela de detalhamento dos motivo da venda possível.
+          columns:
+            - name: stateprovinceid
+              description: Chave primária da tabela, com o código (id) do estado/provincia a ser detalhado. Permite conectá-la à tabela address.
+              tests:
+                - not_null
+            - name: name
+              description: Nome do estado/província. 
+            - name: countryregioncode
+              description: Chave estrangeira da tabela, com o código do país em que o estado/provincia se situa. Permite conectá-la à tabela country_region.
+            - name: territoryid
+              description: Código (id) do território em que o estado/provincia se situa. 
+
+      - name: salesterritory
+          description: Tabela de detalhamento dos territórios de venda.
+          columns:
+            - name: territoryid
+              description: Chave primária da tabela, com o código (id) do território de vendas a ser analisado. Permite conectá-la à tabela stateprovince. 
+              tests:
+                - not_null
+            - name: name
+              description: Nome do território de vendas referido no registro. 
+
+      - name: store
+          description: Tabela de relação de lojas da Adventure Works.
+          columns:
+            - name: businessentityid
+              description: Chave primária da tabela, com o código (id) da loja. 
+              tests:
+                - not_null
+            - name: name
+              description: Nome da Loja. 
+            - name: salespersonid
+              description: Chave estrangeira da tabela, com o id de cada vendedor. Permite conectá-la à tabela salesperson. 
+
+    
+
+
+
+
+

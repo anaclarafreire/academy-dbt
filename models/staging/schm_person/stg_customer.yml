@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_customer
+    description: "Tabela staging de detalhamento de clientes."
+    columns:
+      - name: pk_id_entidade
+        description: "Chave primária da tabela, com o código (id) do cliente."
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_id_territorio
+        description: "Chave estrangeira da tabela, com o código (id) do território de pertencimento do cliente."
+        tests:
+          - not_null

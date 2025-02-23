@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_sales_territory
+    description: "Tabela staging de detalhamento dos territórios de venda."
+    columns:
+      - name: pk_id_territorio
+        description: "Chave primária da tabela, com o código (id) do território."
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_territorio
+        description: "Nome do território."
+
+

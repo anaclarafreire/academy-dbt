@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_vendedor
+    description: "Dimensão de vendedores da AdventureWorks, unindo dados de stg_person, stg_employee e stg_salesperson."
+    columns:
+      - name: pk_id_entidade
+        description: "Chave primária da dimensão vendedor."
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_completo_vendedor
+        description: "Nome completo do vendedor."
+        tests:
+          - not_null
+
+      - name: fk_id_territorio
+        description: "ID do território de atuação do vendedor."

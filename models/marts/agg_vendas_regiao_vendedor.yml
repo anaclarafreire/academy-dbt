@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: agg_vendas_regiao_vendedor
+    description: "Tabela de vendas agregadas por vendedor e território, produzida a partir de fact_vendas."
+    columns:
+      - name: sk_vendas_vendedor_regiao
+        description: "Surrogate Key da agregação entre vendedor e territorio."
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_id_vendedor
+        description: "ID do vendedor analisado."
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_completo_vendedor
+        description: "Nome completo do vendedor analisado."
+
+      - name: fk_id_territorio
+        description: "ID de cada território contido no território analisado."
+        tests:
+          - not_null
+
+      - name: nome_territorio
+        description: "ID de cada território contido no território analisado."
+
+      - name: numero_vendas
+        description: "Número de vendas atendidos por cada vendedor."
+
+      - name: produtos_vendidos
+        description: "Total de produtos vendidos por cada vendedor de cada território analisado."
+
+      - name: faturamento_total
+        description: "Somatório das receitas de cada venda realizada por cada vendedor de cada território analisado."
+
+      - name: ticket_medio
+        description: "Faturamento médio, por venda, dos vendedores de cada território analisado."
+

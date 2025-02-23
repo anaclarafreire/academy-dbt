@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_product
+    description: "Tabela staging de detalhamento de produtos."
+    columns:
+      - name: pk_id_produto
+        description: "Chave primária da tabela, com o código (id) do vendedor."
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_id_territorio
+        description: "Chave estrangeira da tabela, com o código (id) do território de atuação do vendedor."
+        tests:
+          - not_null
